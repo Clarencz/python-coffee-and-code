@@ -13,6 +13,7 @@ from blogs.models import Blog, Comment
 from blogs.serializers import CommentSerializer, BlogSerializer
 from .pagination import CustomPagination
 from employees.filters import EmployeeFilter
+from rest_framework.filters import SearchFilter,OrderingFilter
 # Create your views here.
 @api_view(['GET','POST'])
 def studentView(request):
@@ -159,6 +160,9 @@ class EmployeeViewset(viewsets.ModelViewSet):
 class BlogsView(generics.ListCreateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+    filter_backends = [SearchFilter,OrderingFilter]
+    search_fields = ['blog_title','blog_body']
+    ordering_fields = ['id','blog_title']
 class CommentsView(generics.ListAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
