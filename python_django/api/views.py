@@ -158,7 +158,7 @@ class EmployeeViewset(viewsets.ModelViewSet):
 class BlogsView(generics.ListCreateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
-class CommentsView():
+class CommentsView(generics.ListAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     
@@ -167,6 +167,6 @@ class BlogDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BlogSerializer
     lookup_field = 'pk'
 class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Comment.object.all()
+    queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     lookup_field = 'pk'
