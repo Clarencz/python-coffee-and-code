@@ -87,3 +87,5 @@ class EmployeeDetail(APIView):
         employee = self.get_object(pk)
         employee.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    
